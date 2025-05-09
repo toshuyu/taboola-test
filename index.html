@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taboola Integration</title>
+</head>
+<body>
+    <h1>Welcome to Taboola Module Integration</h1>
+    <div id="taboola-container"></div>
+
+    <script src="https://cdn.taboola.com/libtrc/udntw2-udnmobile/loader.js"></script>
+    <script>
+        // Wait for Taboola script to load and initialize
+        window._taboola = window._taboola || [];
+        _taboola.push({article: 'auto'})
+        _taboola.push({
+            mode: 'thumbnails-a',
+            container: 'taboola-container',
+            placement: 'Below Article Thumbnails',
+            target_type: 'mix'
+        });
+
+        // Handle Taboola's onload event
+        (function() {
+            var taboolaScript = document.createElement('script');
+            taboolaScript.async = true;
+            taboolaScript.src = '//cdn.taboola.com/libtrc/udntw2-udnmobile/loader.js';
+            var firstScript = document.getElementsByTagName('script')[0];
+            firstScript.parentNode.insertBefore(taboolaScript, firstScript);
+        })();
+    </script>
+</body>
+</html>
